@@ -17,7 +17,7 @@ import DBHelper.Holiday;
 import DBHelper.TimetableSlot;
 
 
-public class CalendarAdapter extends BaseAdapter
+class CalendarAdapter extends BaseAdapter
 {
     Context context;
     int month,year;

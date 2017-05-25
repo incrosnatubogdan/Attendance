@@ -68,12 +68,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/About.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/ActivityBaseClass.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/AddCourse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/AddHoliday.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/AddTimetable.java">
           <value>
             <set />
           </value>
@@ -154,6 +169,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/StudentReportAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_fill_attendance_faculty_nfc.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/menu_fill_attendance_faculty_nfc.xml">
           <value>
             <set />
           </value>

@@ -7,40 +7,35 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
+
 import android.nfc.NfcAdapter;
-import android.nfc.Tag;
+
 import android.os.AsyncTask;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.InputStream;
-import java.net.URL;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import DBHelper.Holiday;
+
 import DBHelper.TimetableSlot;
 import Helper.DialogUtils;
 import Helper.HelperMethods;
@@ -59,18 +54,13 @@ public class MainActivityAttendee extends ActivityBaseClass
         setContentView(R.layout.activity_main_activity_attendee);
         setListView();
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        Intent intent = getIntent();
-        // if user scanned the tag and application is not running
+
 
     }
     @Override
     protected void onResume()
     {
-        /*Intent intent=new Intent(this,MainActivityAttendee.class);
-        intent.addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
-        PendingIntent pendingIntent=PendingIntent.getActivity(this, 0, intent, 0);
-        IntentFilter[] intentFilter=new IntentFilter[]{};
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilter, null);*/
+
         enableTagWriteMode();
         super.onResume();
     }
@@ -88,7 +78,7 @@ public class MainActivityAttendee extends ActivityBaseClass
         if(intent.getAction().equals(NfcAdapter.ACTION_NDEF_DISCOVERED))
         {
             Toast.makeText(this, "NFC intent received", Toast.LENGTH_SHORT).show();
-            //nfcTagMsg=NFCUtils.read(intent);
+
             Toast.makeText(this,nfcTagMsg,Toast.LENGTH_SHORT).show();
             new GetTimetableForNow().execute();
             DialogUtils.cancelDialog();
@@ -109,7 +99,7 @@ public class MainActivityAttendee extends ActivityBaseClass
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                     {
-                        String itemName = String.valueOf(parent.getItemAtPosition(position));
+                        
                         changeIntent(position);
                     }
                 }
@@ -138,7 +128,7 @@ public class MainActivityAttendee extends ActivityBaseClass
                     }
                 });
                 alertDialog.show();
-                //DialogUtils.displayInfoDialog(this, "NFC tag scan", "Please scan the NFC tag");
+
                 break;
             case 1:
                 Intent intent=new Intent(this,StudentReport.class);
@@ -155,10 +145,7 @@ public class MainActivityAttendee extends ActivityBaseClass
             IntentFilter[] mWriteTagFilters = new IntentFilter[]{tagDetected};
             nfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mWriteTagFilters, null);
         }
-        else
-        {
 
-        }
     }
 
     private void disableTagWriteMode() {

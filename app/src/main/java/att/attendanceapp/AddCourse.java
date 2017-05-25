@@ -47,7 +47,7 @@ public class AddCourse extends ActivityBaseClass
     }
     class CourseTask extends AsyncTask<Course, String, Void>
     {
-        //private ProgressDialog progressDialog = new ProgressDialog(AddCourse.this);
+
         private ProgressDialog progressDialog;
         String serviceURL;
         InputStream is = null;
@@ -95,7 +95,7 @@ public class AddCourse extends ActivityBaseClass
                 is.close();
                 httpUrlConnection.disconnect();
             }
-            catch (Exception ex){}
+            catch (Exception ignored){}
             return null;
         }
 

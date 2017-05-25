@@ -58,17 +58,7 @@ public class FacultyReport extends ActivityBaseClass
             fileContent+=item.getEmailId()+","+item.getAttendeeNumber()+","+item.getName()+","+item.getCourseCode()+","+item.getAbsentOn();
             fileContent+= "\r\n";
         }
-        /*String response=FileUtils.writeFile(fileContent,this);
-        if(!response.contains("Exception"))
-        {
-            Toast.makeText(this, "File was created at:" + response, Toast.LENGTH_SHORT).show();
-            Intent i = new Intent();
-            i.setAction(android.content.Intent.ACTION_VIEW);
-            i.setDataAndType(Uri.fromFile(new File(response)), "text/plain");
-            startActivity(i);
-        }
-        else
-            Toast.makeText(this, response, Toast.LENGTH_LONG).show(); */
+
     }
     class GetAttendanceReport extends AsyncTask<String, Void, Void>
     {

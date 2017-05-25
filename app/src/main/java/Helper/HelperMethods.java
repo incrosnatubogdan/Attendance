@@ -2,7 +2,7 @@ package Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.nfc.Tag;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
@@ -19,9 +19,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 import java.util.Date;
-import java.util.HashMap;
+
 import java.util.Locale;
 import java.util.Random;
 
@@ -29,13 +29,13 @@ import att.attendanceapp.R;
 
 public class HelperMethods
 {
-    static String sharedPrefFileName="userInfo";
+    private static String sharedPrefFileName="userInfo";
     public static String TAG="ATTENDANCE";
 
     public static String getResponse(String serviceUrl,String[] keys, String[] values)
     {
         String response = "";
-        InputStream is = null;
+        InputStream is;
         try
         {
             URL url = new URL(serviceUrl);
@@ -89,20 +89,7 @@ public class HelperMethods
         String arr[]=time.split(":");
         return arr[0]+":"+arr[1];
     }
-    public static String convertDateToFormat(String date,String format)
-    {
-        Date dt=null;
-        SimpleDateFormat sdf=null;
-        try
-        {
-            sdf = new SimpleDateFormat(format, Locale.US);
-            dt=new Date(date);
-        }
-        catch (Exception ex){
-            Log.e(TAG,ex.getMessage());
-        }
-        return sdf.format(dt);
-    }
+
     public static String convertDateToFormat(Date date,String format)
     {
         SimpleDateFormat sdf=null;
@@ -114,6 +101,7 @@ public class HelperMethods
         catch (Exception ex){
             Log.e(TAG,ex.getMessage());
         }
+        assert sdf != null;
         return sdf.format(date);
     }
     public static String convertDateFromSQLToUS(String date)
@@ -126,7 +114,7 @@ public class HelperMethods
             Date dt = originalFormat.parse(date);
             formattedDate = targetFormat.format(dt);
         }
-        catch (Exception ex){}
+        catch (Exception ignored){}
         return formattedDate;
     }
     public static String convertDateFromUSToSQL(String date)
@@ -139,7 +127,7 @@ public class HelperMethods
             Date dt = originalFormat.parse(date);
             formattedDate = targetFormat.format(dt);
         }
-        catch (Exception ex){}
+        catch (Exception ignored){}
         return formattedDate;
     }
     public static boolean isEmpty(EditText target)
@@ -154,42 +142,36 @@ public class HelperMethods
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
         String isUserLoggedIn = sharedPreferences.getString(context.getString(R.string.isLoggedIn_sharedPref_string), "").toLowerCase();
-        if(isUserLoggedIn.equals("yes"))
-            return true;
-        else
-            return false;
+        return isUserLoggedIn.equals("yes");
     }
-    public static void removeAllSharedPref(Context context)
+    private static void removeAllSharedPref(Context context)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
     public static void removeSharedPref(Context context,String key)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(key);
-        editor.commit();
+        editor.apply();
     }
     public static String getSharedPref(Context context,String key)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
-        String value = sharedPreferences.getString(key, "");
-        return value;
+        return sharedPreferences.getString(key, "");
     }
     public static String getCurrentLoggedinUser(Context context)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString(context.getString(R.string.loggedInUser_sharedPref_string), "");
-        return user;
+        return sharedPreferences.getString(context.getString(R.string.loggedInUser_sharedPref_string), "");
     }
     public static String getCurrentLoggedinUserType(Context context)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString(context.getString(R.string.userType_sharedPref_string), "");
-        return user;
+        return sharedPreferences.getString(context.getString(R.string.userType_sharedPref_string), "");
     }
     public static void signout(Context context)
     {

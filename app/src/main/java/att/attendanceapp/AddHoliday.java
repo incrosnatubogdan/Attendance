@@ -106,7 +106,7 @@ public class AddHoliday extends ActivityBaseClass
         holiday.shouldAnimateOnAdd =true;
         new HolidayTask().execute(holiday);
     }
-    class HolidayTask extends AsyncTask<Holiday, String, Void>
+    private class HolidayTask extends AsyncTask<Holiday, String, Void>
     {
         //private ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
         InputStream is = null;
@@ -118,7 +118,7 @@ public class AddHoliday extends ActivityBaseClass
             String url_select = getString(R.string.serviceURL)+"/addHoliday.php";
             try
             {
-                holiday=(Holiday)params[0];
+                holiday= params[0];
                 URL url = new URL(url_select);
                 HttpURLConnection httpUrlConnection=(HttpURLConnection)url.openConnection();
                 httpUrlConnection.setRequestMethod("POST");
@@ -144,7 +144,7 @@ public class AddHoliday extends ActivityBaseClass
                 is.close();
                 httpUrlConnection.disconnect();
             }
-            catch (Exception ex){}
+            catch (Exception ignored){}
             return null;
         }
 

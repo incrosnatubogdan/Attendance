@@ -26,16 +26,16 @@ import DBHelper.Timetable;
 
 
 
-public class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecyclerAdapter.ViewHolder>
+class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecyclerAdapter.ViewHolder>
 {
     private ArrayList<Attendee> mDataset;
     String courseCode;
     Context context;
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView email,number;
+        TextView email,number;
         ImageButton delete;
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             email=(TextView)itemView.findViewById(R.id.tvManageAttendeeId);
             number=(TextView)itemView.findViewById(R.id.tvManageAttendeeNumber);
@@ -44,12 +44,13 @@ public class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecycl
         }
     }
 
-    public AttendeeRecyclerAdapter(ArrayList<Attendee> myDataset,Context context,String courseCode) {
+    AttendeeRecyclerAdapter(ArrayList<Attendee> myDataset, Context context, String courseCode) {
         mDataset = myDataset;
         this.context=context;
         this.courseCode=courseCode;
     }
-    public void deleteItem(int position)
+
+    private void deleteItem(int position)
     {
         Attendee itemToRemove=mDataset.get(position);
         mDataset.remove(itemToRemove);
@@ -60,8 +61,7 @@ public class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecycl
     public AttendeeRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                                    int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.attendees_recycler_adapter, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
     @Override
     public int getItemCount() {
@@ -102,7 +102,7 @@ public class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecycl
             }
         });
     }
-    class DeleteAttendee extends AsyncTask<String, Void, String>
+    private class DeleteAttendee extends AsyncTask<String, Void, String>
     {
         InputStream is = null;
         int responseCode = 0;
@@ -120,7 +120,7 @@ public class AttendeeRecyclerAdapter extends RecyclerView.Adapter<AttendeeRecycl
                 OutputStream outputStream = httpUrlConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String data = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(params[0], "UTF-8")+"&"+
-                        URLEncoder.encode("course_code", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");;
+                        URLEncoder.encode("course_code", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

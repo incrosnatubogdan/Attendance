@@ -5,5 +5,5 @@ import android.widget.RadioButton;
 
 public interface AdapterInterface
 {
-    public void setRadioStatus(RadioButton[] btn);
+    void setRadioStatus(RadioButton[] btn);
 }

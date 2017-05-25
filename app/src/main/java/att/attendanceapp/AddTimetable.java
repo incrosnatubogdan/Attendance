@@ -191,16 +191,14 @@ public class AddTimetable extends ActivityBaseClass
     {
 
         String days="";
-        for(int i=0;i<daysCheckboxes.length;i++)
-        {
-            if(daysCheckboxes[i].isChecked())
-            {
-                days += daysCheckboxes[i].getTag() + ",";
+        for (CheckBox daysCheckboxe : daysCheckboxes) {
+            if (daysCheckboxe.isChecked()) {
+                days += daysCheckboxe.getTag() + ",";
             }
         }
         if(days.length()>0)
             days=days.substring(0,days.length()-1);
-        String isrecurring=radioOccur.isChecked()==true?"yes":"no";
+        String isrecurring= radioOccur.isChecked() ?"yes":"no";
         timetable=new Timetable();
         timetable.setCourseCode(courseDropDown.getSelectedItem().toString());
         timetable.setFacilitatorId(facilitator);
@@ -214,7 +212,7 @@ public class AddTimetable extends ActivityBaseClass
     }
 
 
-    class GetCourses extends AsyncTask<String, Void, String>
+    private class GetCourses extends AsyncTask<String, Void, String>
     {
         private ProgressDialog progressDialog;
         InputStream is = null;
@@ -292,7 +290,7 @@ public class AddTimetable extends ActivityBaseClass
                         {
                             displayCourseCodes[i]=courseArrayList.get(i).getCourseCode();
                         }
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddTimetable.this, android.R.layout.simple_spinner_item, displayCourseCodes);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(AddTimetable.this, android.R.layout.simple_spinner_item, displayCourseCodes);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         courseDropDown.setAdapter(adapter);
                     }
@@ -305,11 +303,11 @@ public class AddTimetable extends ActivityBaseClass
             else
             {
                 Toast.makeText(getApplicationContext(),v,Toast.LENGTH_SHORT).show();
-                //relativeLayout.setVisibility(View.INVISIBLE);
+
             }
         }
     }
-    class AddToTimetable extends AsyncTask<Timetable, Void, String>
+    private class AddToTimetable extends AsyncTask<Timetable, Void, String>
     {
         private ProgressDialog progressDialog;
         InputStream is = null;

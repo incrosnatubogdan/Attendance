@@ -141,15 +141,14 @@ public class FillAttendanceByFaculty extends ActivityBaseClass
     protected void onNewIntent(Intent intent)
     {
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction()))
-        //if(intent.getAction().equals(NfcAdapter.ACTION_NDEF_DISCOVERED))
+
         {
             Toast.makeText(this, "NFC intent received", Toast.LENGTH_SHORT).show();
-            //Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
             int randomNumber=HelperMethods.generateRandom(1000,9999);
             new UpdateRandomCode().execute(attendanceId, String.valueOf(randomNumber));
             new UpdateAttendance().execute(attendanceId);
-           // String msg=NFCUtils.writeCustom(intent, getPackageName(), "attendanceId:" + attendanceId + ",number:" + randomNumber);
-            //Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+
             DialogUtils.cancelDialog();
         }
         super.onNewIntent(intent);
