@@ -31,7 +31,6 @@ import java.util.Calendar;
 
 import DBHelper.AttendanceReport;
 import DBHelper.Attendee;
-import Helper.FileUtils;
 import Helper.HelperMethods;
 
 public class FacultyReport extends ActivityBaseClass
@@ -59,7 +58,7 @@ public class FacultyReport extends ActivityBaseClass
             fileContent+=item.getEmailId()+","+item.getAttendeeNumber()+","+item.getName()+","+item.getCourseCode()+","+item.getAbsentOn();
             fileContent+= "\r\n";
         }
-        String response=FileUtils.writeFile(fileContent,this);
+        /*String response=FileUtils.writeFile(fileContent,this);
         if(!response.contains("Exception"))
         {
             Toast.makeText(this, "File was created at:" + response, Toast.LENGTH_SHORT).show();
@@ -69,7 +68,7 @@ public class FacultyReport extends ActivityBaseClass
             startActivity(i);
         }
         else
-            Toast.makeText(this, response, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, response, Toast.LENGTH_LONG).show(); */
     }
     class GetAttendanceReport extends AsyncTask<String, Void, Void>
     {

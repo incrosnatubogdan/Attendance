@@ -59,7 +59,7 @@ import DBHelper.Timetable;
 import Helper.AdapterInterface;
 import Helper.DialogUtils;
 import Helper.HelperMethods;
-import Helper.NFCUtils;
+
 
 public class FillAttendanceByFaculty extends ActivityBaseClass
 {
@@ -148,8 +148,8 @@ public class FillAttendanceByFaculty extends ActivityBaseClass
             int randomNumber=HelperMethods.generateRandom(1000,9999);
             new UpdateRandomCode().execute(attendanceId, String.valueOf(randomNumber));
             new UpdateAttendance().execute(attendanceId);
-            String msg=NFCUtils.writeCustom(intent, getPackageName(), "attendanceId:" + attendanceId + ",number:" + randomNumber);
-            Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+           // String msg=NFCUtils.writeCustom(intent, getPackageName(), "attendanceId:" + attendanceId + ",number:" + randomNumber);
+            //Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
             DialogUtils.cancelDialog();
         }
         super.onNewIntent(intent);

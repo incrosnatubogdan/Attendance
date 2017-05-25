@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import DBHelper.Attendee;
 import DBHelper.Course;
 import DBHelper.Holiday;
-import Helper.FileUtils;
 import Helper.HelperMethods;
 
 public class ManageAttendees extends ActivityBaseClass
@@ -74,7 +73,7 @@ public class ManageAttendees extends ActivityBaseClass
     }
     public void importClick(View view)
     {
-        FileUtils.showFileChooser(this, this);
+        //FileUtils.showFileChooser(this, this);
     }
 
     @Override
@@ -87,12 +86,12 @@ public class ManageAttendees extends ActivityBaseClass
                     Uri uri = data.getData();
                     try
                     {
-                        String path = FileUtils.getPath(this, uri);
+                        //String path = FileUtils.getPath(this, uri);
                             // making comma separated attendees and courses list
-                        if(path==null || path.isEmpty())
+                       // if(path==null || path.isEmpty())
                             Toast.makeText(this, "Unable retrieve file.Make sure your txt file is not currputed", Toast.LENGTH_LONG).show();
-                        else
-                            new AddAttendee().execute(path);
+                      //  else
+                       //     new AddAttendee().execute(path);
                     }
                     catch(Exception ex)
                     {
@@ -112,19 +111,19 @@ public class ManageAttendees extends ActivityBaseClass
         String attendees="",courseCodes="";
         private void readFile(String path)
         {
-            String fileContent=FileUtils.readFile(path, "txt");
-            if(fileContent.contains("extension"))
+           // String fileContent=FileUtils.readFile(path, "txt");
+           // if(fileContent.contains("extension"))
                 returnString="Wrong file extension";
-            else if(fileContent.contains("Exception") || fileContent.isEmpty())
+           // else if(fileContent.contains("Exception") || fileContent.isEmpty())
             {
-                returnString=fileContent;
+         //       returnString=fileContent;
             }
-            else
+           // else
             {
-                String[] attendeeCourses = fileContent.split("\n");
-                for (String item : attendeeCourses)
+              //  String[] attendeeCourses = fileContent.split("\n");
+             //   for (String item : attendeeCourses)
                 {
-                    attendees += item.split(",")[0] + ",";
+              //      attendees += item.split(",")[0] + ",";
                     courseCodes += courseCode + ",";
                 }
                 attendees = attendees.substring(0, attendees.length() - 1);

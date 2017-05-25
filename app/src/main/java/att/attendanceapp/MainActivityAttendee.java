@@ -44,7 +44,6 @@ import DBHelper.Holiday;
 import DBHelper.TimetableSlot;
 import Helper.DialogUtils;
 import Helper.HelperMethods;
-import Helper.NFCUtils;
 
 public class MainActivityAttendee extends ActivityBaseClass
 {
@@ -62,22 +61,7 @@ public class MainActivityAttendee extends ActivityBaseClass
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         Intent intent = getIntent();
         // if user scanned the tag and application is not running
-        if(intent.getType() != null && intent.getType().equals("application/vnd." + getPackageName()))
-        {
-            // if logged in as student
-            if(HelperMethods.getCurrentLoggedinUserType(this).equals("attendee"))
-            {
-                nfcTagMsg = NFCUtils.readDataCustom(intent);
-                Toast.makeText(getApplicationContext(), "read:" + nfcTagMsg, Toast.LENGTH_LONG).show();
-                if (!nfcTagMsg.isEmpty())
-                    new GetTimetableForNow().execute();
-            }
-            else
-            {
-                finish();
-                //HelperMethods.signout(this);
-            }
-        }
+
     }
     @Override
     protected void onResume()
@@ -104,7 +88,7 @@ public class MainActivityAttendee extends ActivityBaseClass
         if(intent.getAction().equals(NfcAdapter.ACTION_NDEF_DISCOVERED))
         {
             Toast.makeText(this, "NFC intent received", Toast.LENGTH_SHORT).show();
-            nfcTagMsg=NFCUtils.read(intent);
+            //nfcTagMsg=NFCUtils.read(intent);
             Toast.makeText(this,nfcTagMsg,Toast.LENGTH_SHORT).show();
             new GetTimetableForNow().execute();
             DialogUtils.cancelDialog();

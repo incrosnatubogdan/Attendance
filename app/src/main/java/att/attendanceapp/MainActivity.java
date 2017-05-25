@@ -39,7 +39,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import DBHelper.TimetableSlot;
-import Helper.FileUtils;
 import Helper.HelperMethods;
 
 public class MainActivity extends ActivityBaseClass

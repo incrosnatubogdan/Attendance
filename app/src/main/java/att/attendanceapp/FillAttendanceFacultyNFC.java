@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import Helper.NFCUtils;
 
 public class FillAttendanceFacultyNFC extends ActivityBaseClass
 {
@@ -54,14 +53,14 @@ public class FillAttendanceFacultyNFC extends ActivityBaseClass
             //handleNFC(intent);
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
 
-            if(NFCUtils.checkNFCAvailable(this,nfcAdapter))
+           /* if(NFCUtils.checkNFCAvailable(this,nfcAdapter))
             {
                 String msg=NFCUtils.write("This is hello", tag,this);
                 Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
-                /*msg=NFCUtils.read(intent);
-                Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();*/
+                msg=NFCUtils.read(intent);
+                Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
             }
-        }
+        } */
         super.onNewIntent(intent);
     }
-}
+}}
