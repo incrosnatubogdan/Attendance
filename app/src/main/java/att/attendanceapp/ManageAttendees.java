@@ -34,13 +34,11 @@ import Helper.HelperMethods;
 
 public class ManageAttendees extends ActivityBaseClass
 {
-    private static final int FILE_SELECT_CODE = 0;
     String courseCode="";
 
     ArrayList<Attendee> attendeeList=new ArrayList<Attendee>();
     private RecyclerView attendeesView;
     private MyScheduleRecyclerAdapter recyclerAdapter;
-    private RecyclerView.LayoutManager recyclerLayoutManager;
     Context context=this;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,7 +54,7 @@ public class ManageAttendees extends ActivityBaseClass
             attendeesView = (RecyclerView) findViewById(R.id.rviewManageAttendees);
             attendeesView.setHasFixedSize(true);
             attendeesView.setItemAnimator(new DefaultItemAnimator());
-            recyclerLayoutManager = new LinearLayoutManager(this);
+            RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
             attendeesView.setLayoutManager(recyclerLayoutManager);
             new GetAttendeesForThisCourse().execute(courseCode);
         }

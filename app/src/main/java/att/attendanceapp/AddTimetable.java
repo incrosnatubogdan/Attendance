@@ -1,9 +1,9 @@
 package att.attendanceapp;
 
 import android.app.Activity;
-import android.app.AlarmManager;
+
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
+
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -39,7 +39,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 import java.util.Locale;
 
 import DBHelper.Course;

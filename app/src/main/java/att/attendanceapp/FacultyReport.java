@@ -2,42 +2,36 @@ package att.attendanceapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+
 import android.os.AsyncTask;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.CompoundButton;
+
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.InputStream;
-import java.io.OutputStream;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 import DBHelper.AttendanceReport;
-import DBHelper.Attendee;
+
 import Helper.HelperMethods;
 
 public class FacultyReport extends ActivityBaseClass
 {
     private RecyclerView recyclerView;
     Context context=this;
-    private RecyclerView.LayoutManager recyclerLayoutManager;
     ArrayList<AttendanceReport> reportItems;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,21 +40,16 @@ public class FacultyReport extends ActivityBaseClass
         setContentView(R.layout.activity_faculty_report);
         recyclerView = (RecyclerView) findViewById(R.id.rviewFacultyReport);
         recyclerView.setHasFixedSize(true);
-        recyclerLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         new GetAttendanceReport().execute();
     }
     public void onExportClick(View view)
     {
-        String fileContent="";
-        for(AttendanceReport item:reportItems)
-        {
-            fileContent+=item.getEmailId()+","+item.getAttendeeNumber()+","+item.getName()+","+item.getCourseCode()+","+item.getAbsentOn();
-            fileContent+= "\r\n";
-        }
+
 
     }
-    class GetAttendanceReport extends AsyncTask<String, Void, Void>
+    private class GetAttendanceReport extends AsyncTask<String, Void, Void>
     {
         private ProgressDialog progressDialog;
         InputStream is = null;

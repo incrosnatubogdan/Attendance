@@ -1,30 +1,24 @@
 package att.attendanceapp;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
-import android.nfc.Tag;
+
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -37,26 +31,16 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 import DBHelper.Attendee;
-import DBHelper.Course;
-import DBHelper.Holiday;
-import DBHelper.Timetable;
-import Helper.AdapterInterface;
+
 import Helper.DialogUtils;
 import Helper.HelperMethods;
 
@@ -64,16 +48,15 @@ import Helper.HelperMethods;
 public class FillAttendanceByFaculty extends ActivityBaseClass
 {
     private RecyclerView attendeesView;
-    private RecyclerView.LayoutManager recyclerLayoutManager;
     Context context=this;
-    ArrayList<Attendee> attendeeList=new ArrayList<Attendee>();
+    ArrayList<Attendee> attendeeList= new ArrayList<>();
     String courseCode="";
     String attendanceId="";
     NfcAdapter nfcAdapter;
     FillAttendanceAdapter adapter;
     CheckBox allPresent;
     TextView tvCourseCode,tvCourseTimings,tvCourseDate;
-    private PendingIntent mNfcPendingIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -96,7 +79,7 @@ public class FillAttendanceByFaculty extends ActivityBaseClass
         attendeesView = (RecyclerView) findViewById(R.id.rviewFillAttendance);
         attendeesView.setHasFixedSize(true);
         attendeesView.setItemAnimator(new DefaultItemAnimator());
-        recyclerLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
         attendeesView.setLayoutManager(recyclerLayoutManager);
         allPresent=(CheckBox)findViewById(R.id.chkFillAttendanceAllPresent);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -106,7 +89,7 @@ public class FillAttendanceByFaculty extends ActivityBaseClass
     private void enableTagWriteMode() {
 
         if(nfcAdapter!=null) {
-            mNfcPendingIntent = PendingIntent.getActivity(this, 0,
+            PendingIntent mNfcPendingIntent = PendingIntent.getActivity(this, 0,
                     new Intent(this, FillAttendanceByFaculty.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
             IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
             IntentFilter[] mWriteTagFilters = new IntentFilter[]{tagDetected};
