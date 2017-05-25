@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal" android:padding="@dimen/adapter_padding"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:descendantFocusability="blocksDescendants">
+
+
+            <TextView
+
+                android:text="Course code"
+                android:id="@+id/tvAdapterCourseCode" android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Course Name"
+                android:id="@+id/tvAdapterCourseName" android:textAppearance="?android:attr/textAppearanceMedium"
+
+                />
+
+    <ImageButton
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="0.3"
+        android:id="@+id/ibtnCourseAddAttendee" android:src="@drawable/icon_add_people"  />
+    <ImageButton
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:id="@+id/ibtnCourseDelete" android:src="@drawable/icon_delete"  />
+
+</LinearLayout>

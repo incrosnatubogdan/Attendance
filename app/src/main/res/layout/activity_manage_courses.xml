@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="att.attendanceapp.ManageCourses" android:paddingLeft="@dimen/listview_padding"
+                android:paddingRight="@dimen/listview_padding">
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvManageCourses"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" android:divider="@color/mainColor" android:dividerHeight="1dp"
+        android:paddingBottom="90dp"
+        />
+    <ImageButton
+                 android:layout_width="60dp"
+                 android:layout_height="60dp"
+                 android:text="Add"
+                 android:id="@+id/ibtnAddCourse"
+                 android:src="@drawable/icon_add_floating"
+                 android:background="@drawable/floating_action_button"
+                 android:layout_alignParentBottom="true"
+                 android:layout_alignParentRight="true"
+                 android:layout_marginBottom="20dp"
+                 android:elevation="4dp"
+                 android:onClick="onAddCourseClick"
+
+                />
+</RelativeLayout>

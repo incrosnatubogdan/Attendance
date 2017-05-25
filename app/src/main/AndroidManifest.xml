@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="att.attendanceapp" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".AddCourse"
+            android:label="@string/title_activity_add_course" >
+        </activity>
+        <activity
+            android:name=".ManageCourses"
+            android:label="@string/title_activity_manage_courses" >
+        </activity>
+        <activity
+            android:name=".ManageHolidays"
+            android:label="@string/title_activity_manage_holidays" >
+        </activity>
+        <activity
+            android:name=".EditCourse"
+            android:label="@string/title_activity_edit_course" >
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name=".Help"
+            android:label="@string/title_activity_help" >
+        </activity>
+        <activity
+            android:name=".AddHoliday"
+            android:label="@string/title_activity_add_holiday" >
+        </activity>
+        <activity
+            android:name=".EditHoliday"
+            android:label="@string/title_activity_edit_holiday" >
+        </activity>
+        <activity
+            android:name=".MyTimetable"
+            android:label="@string/title_activity_my_timetable" >
+        </activity>
+        <activity
+            android:name=".AddTimetable"
+            android:label="@string/title_activity_add_timetable" >
+        </activity>
+        <activity
+            android:name=".ViewTimetable"
+            android:label="@string/title_activity_view_timetable" >
+        </activity>
+        <activity
+            android:name=".ManageMySchedule"
+            android:label="@string/title_activity_manage_my_schedule" >
+        </activity>
+        <activity
+            android:name=".ManageAttendees"
+            android:label="@string/title_activity_manage_attendees" >
+        </activity>
+        <activity
+            android:name=".FillAttendanceByFaculty"
+            android:label="@string/title_activity_fill_attendance_by_faculty" >
+        </activity>
+        <activity
+            android:name=".MainActivityAttendee"
+            android:label="@string/title_activity_main_activity_attendee" >
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="application/vnd.att.attendanceapp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ViewTimetableAttendee"
+            android:label="@string/title_activity_view_timetable_attendee" >
+        </activity>
+        <activity
+            android:name=".FacultyReport"
+            android:label="@string/title_activity_faculty_report" >
+        </activity>
+        <activity
+            android:name=".FillAttendanceFacultyNFC"
+            android:label="@string/title_activity_fill_attendance_faculty_nfc" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".NewUserRegistration"
+            android:label="@string/title_activity_new_user_registration" >
+        </activity>
+        <activity
+            android:name=".LoginUser"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".AlarmRcvr"
+            android:process=":remote" />
+
+        <activity
+            android:name=".StudentReport"
+            android:label="@string/title_activity_student_report" >
+        </activity>
+    </application>
+
+</manifest>
