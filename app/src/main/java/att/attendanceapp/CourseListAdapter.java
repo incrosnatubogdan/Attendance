@@ -56,13 +56,12 @@ public class CourseListAdapter  extends BaseAdapter
     {
         TextView courseCode;
         TextView courseName;
-        //TextView description;
+
         ImageButton delete,add;
         ViewHolder(View view)
         {
             courseCode=(TextView)view.findViewById(R.id.tvAdapterCourseCode);
             courseName=(TextView)view.findViewById(R.id.tvAdapterCourseName);
-            //description=(TextView)view.findViewById(R.id.tvAdapterCourseDescription);
             delete=(ImageButton)view.findViewById(R.id.ibtnCourseDelete);
             add=(ImageButton)view.findViewById(R.id.ibtnCourseAddAttendee);
         }
@@ -136,7 +135,7 @@ public class CourseListAdapter  extends BaseAdapter
 
             }
         });
-        if(obj.shouldAnimateOnAdd == true)
+        if(obj.shouldAnimateOnAdd)
         {
             Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
             animation.setDuration(500);
@@ -176,7 +175,7 @@ public class CourseListAdapter  extends BaseAdapter
             }
         });
     }
-    class DeleteCourse extends AsyncTask<String, Void, String>
+    private class DeleteCourse extends AsyncTask<String, Void, String>
     {
 
         InputStream is = null;
@@ -216,8 +215,7 @@ public class CourseListAdapter  extends BaseAdapter
         protected void onPostExecute(String v)
         {
             super.onPostExecute(v);
-            Course obj=courses.get(position);
-            // no exception found on previous call
+
             if(!v.toLowerCase().contains("exception"))
             {
 

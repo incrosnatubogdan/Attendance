@@ -163,6 +163,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/NewUserRegistration.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/att/attendanceapp/RecyclerTimetableAdapter.java">
           <value>
             <set />

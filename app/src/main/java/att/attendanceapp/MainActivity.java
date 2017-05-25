@@ -1,13 +1,9 @@
 package att.attendanceapp;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,27 +12,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
+
 
 import DBHelper.TimetableSlot;
 import Helper.HelperMethods;
@@ -51,14 +32,13 @@ public class MainActivity extends ActivityBaseClass
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setListView();
-        /*HelperMethods.putSharedPref(this, getString(R.string.isLoggedIn_sharedPref_string), "yes");
-        HelperMethods.putSharedPref(this, getString(R.string.loggedInUser_sharedPref_string), "rujoota.shah@gmail.com");*/
+
     }
     void setListView()
     {
         String[] arr=getResources().getStringArray(R.array.listview_main_facilitator);
 
-        ListAdapter adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arr);
+        ListAdapter adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
 
         ListView listView=(ListView)findViewById(R.id.listViewMain);
         listView.setAdapter(adapter);
@@ -110,7 +90,7 @@ public class MainActivity extends ActivityBaseClass
             startActivity(newIntent);
         }
     }
-    class GetTimetableForNow extends AsyncTask<String, Void, String>
+    private class GetTimetableForNow extends AsyncTask<String, Void, String>
     {
         InputStream is = null;
         String response = "";
@@ -123,7 +103,6 @@ public class MainActivity extends ActivityBaseClass
 
             try
             {
-                URL url = new URL(url_select);
                 String keys[]={"user_id","date","time"};
 
                 Calendar dateCalendar = Calendar.getInstance();

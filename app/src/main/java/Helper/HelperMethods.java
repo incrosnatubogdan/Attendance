@@ -180,7 +180,6 @@ public class HelperMethods
     public static void putSharedPref(Context context,String key,String value)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPrefFileName, Context.MODE_PRIVATE);
-        String isUserLoggedIn = sharedPreferences.getString(key, "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();

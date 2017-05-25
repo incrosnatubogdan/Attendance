@@ -99,7 +99,7 @@ public class MainActivityAttendee extends ActivityBaseClass
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                     {
-                        
+
                         changeIntent(position);
                     }
                 }

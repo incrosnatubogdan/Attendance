@@ -1,31 +1,19 @@
 package att.attendanceapp;
 
-import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-
-import DBHelper.Course;
 import Helper.HelperMethods;
 
 public class NewUserRegistration extends ActivityBaseClass
@@ -115,7 +103,7 @@ public class NewUserRegistration extends ActivityBaseClass
     {
         this.finish();
     }
-    class NewUserAdd extends AsyncTask<String, String, Void>
+    private class NewUserAdd extends AsyncTask<String, String, Void>
     {
         String serviceURL;
         String response = "";
